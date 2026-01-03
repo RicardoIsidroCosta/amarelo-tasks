@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { CheckSquare, Cake, Sparkles } from "lucide-react";
+import { CheckSquare, Cake, Sparkles, Bell } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -10,6 +10,7 @@ const Layout = ({ children }: LayoutProps) => {
 
   const navItems = [
     { path: "/", label: "Tarefas", icon: CheckSquare },
+    { path: "/reminders", label: "Lembretes", icon: Bell },
     { path: "/birthdays", label: "Aniversários", icon: Cake },
   ];
 
@@ -25,10 +26,10 @@ const Layout = ({ children }: LayoutProps) => {
       <header className="relative z-10 border-b border-border/50 backdrop-blur-xl bg-background/80">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <Sparkles className="w-6 h-6 text-primary" />
               <span className="text-xl font-semibold text-gradient">TaskFlow</span>
-            </div>
+            </Link>
             
             <nav className="flex items-center gap-1">
               {navItems.map((item) => {
